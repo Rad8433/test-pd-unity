@@ -16,18 +16,10 @@ void setup()
 
 void loop()
 {
-  int maLectureAngle = analogRead(CANAL_ANGLE_UNIT);
+  int maLectureAngle = myPbHub.analogRead(CANAL_ANGLE_UNIT);
   int rotation = maLectureAngle * 360 / 4095;
-  
-
-  int maLectureKey = digitalRead(CANAL_KEY_UNIT);
-  
+  int maLectureKey = myPbHub.digitalRead(CANAL_KEY_UNIT);
   monOsc.sendInt("/rotation", rotation);
   monOsc.sendInt("/bouton", maLectureKey);
-  
-  // Print debug output
-  Serial.println(rotation);
-  Serial.println(maLectureKey);
-  
   delay(20);
 }
